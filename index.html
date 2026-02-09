@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fit Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="font-family:sans-serif;padding:20px">
+  <h2>🏋️ Fit Guide</h2>
+
+  <h3>Today's Training</h3>
+  <p id="plan"></p>
+
+  <h3>Indian Veg Nutrition</h3>
+  <ul>
+    <li>Dal + Roti – Protein 18g</li>
+    <li>Chana – Protein 15g</li>
+    <li>Paneer – Protein 22g</li>
+  </ul>
+
+  <button onclick="notify()">⏰ Workout Reminder</button>
+
+<script>
+const plans=[
+ "Pushups + Squats + Walk",
+ "Jogging + Core",
+ "Rest & Stretch"
+];
+document.getElementById("plan").innerText =
+ plans[new Date().getDay()%plans.length];
+
+function notify(){
+ Notification.requestPermission().then(p=>{
+  if(p==="granted"){
+   new Notification("Fit Guide 💪",
+    {body:"Time to move your body!"});
+  }
+ });
+}
+</script>
+</body>
+</html>
